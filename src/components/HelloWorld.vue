@@ -1,14 +1,20 @@
+<script lang="ts">
+export default{
+  name:'HelloWorld'
+}
+</script>
 <script setup lang="ts">
 import { ref } from 'vue'
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
+const name = import.meta.env.VITE_COMPONENT_NAME
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
-
+  <h2>{{ name }}</h2>
   <p>
     Recommended IDE setup:
     <a href='https://code.visualstudio.com/' target='_blank'>VS Code</a>
@@ -31,9 +37,18 @@ const count = ref(0)
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
+  <div class='a'>
+    aaaaaaaa
+    <div class='b'>
+      bbbbbbbbb
+      <div class='c'>
+        cccccccccc
+      </div>
+    </div>
+  </div>
 </template>
 
-<style scoped>
+<style scoped lang="postcss">
 a {
   color: #42b983;
 }
@@ -48,5 +63,18 @@ code {
   padding: 2px 4px;
   border-radius: 4px;
   color: #304455;
+}
+
+.a {
+  .b {
+
+    .c {
+      background-color: green;
+    }
+
+    background-color: yellow;
+  }
+
+  background-color: red;
 }
 </style>

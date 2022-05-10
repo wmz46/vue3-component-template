@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue@3"></script>
+  <!--引入组件js-->
+  <script src="index.umd.js"></script>
+  <!--引入组件css-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>通过网页引入方式使用自定义组件实例</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <!--使用自定义标签，封装组件必须配置name-->
+    <hello-world></hello-world>
+  </div>
+
+  <script>
+    const { createApp } = Vue
+
+    const app = createApp()
+    //在.env中定义的组件名称
+    app.use(MyComponent)
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
