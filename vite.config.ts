@@ -12,6 +12,14 @@ export default defineConfig({
       additionalLegacyPolyfills: ['regenerator-runtime/runtime'] // 兼容旧版本浏览器
     })
   ],
+  resolve: {
+    alias: [
+      {
+        find: '@',
+        replacement: '/src'
+      }
+    ]
+  },
   css:{
     postcss:{
       plugins:[
