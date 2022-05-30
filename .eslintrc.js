@@ -20,6 +20,8 @@ module.exports = {
     'plugin:vue/vue3-recommended'
   ],
   rules: {
+    //不检测组件名必须多单词
+    "vue/multi-word-component-names":"off",
     'vue/max-attributes-per-line': ['error', {
       singleline: 10,
       multiline: 1
