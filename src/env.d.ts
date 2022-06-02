@@ -10,6 +10,7 @@ declare module '*.vue' {
 declare module 'postcss-import'
 declare module 'tailwindcss'
 declare module 'tailwindcss/nesting'
+declare module 'rollup-plugin-external-globals'
 
 interface IResponse<T = any> {
   code: number;

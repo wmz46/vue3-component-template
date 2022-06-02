@@ -6,8 +6,7 @@ import direct from '@/directive/index'
 
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
-import 'element-plus/dist/index.css'
-import 'element-plus/theme-chalk/display.css'
+
 const app = createApp(App)
 // 注入自定义指令
 direct(app)

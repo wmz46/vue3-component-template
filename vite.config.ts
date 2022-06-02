@@ -1,4 +1,4 @@
-import { UserConfigExport, ConfigEnv, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import postcssImport from 'postcss-import'
 import tailwindcss from 'tailwindcss'
@@ -6,33 +6,46 @@ import autoprefixer from 'autoprefixer'
 import nesting from 'tailwindcss/nesting'
 import legacy from '@vitejs/plugin-legacy'
 import { viteMockServe } from 'vite-plugin-mock'
+import externalGlobals from 'rollup-plugin-external-globals'
 // https://vitejs.dev/config/
-export default ({ command, mode }: ConfigEnv): UserConfigExport => {
-
-  return {
-    plugins: [vue(),
-      legacy({
-        additionalLegacyPolyfills: ['regenerator-runtime/runtime'] // 兼容旧版本浏览器
-      }),
-      viteMockServe()
-    ],
-    resolve: {
-      alias: [
-        {
-          find: '@',
-          replacement: '/src'
-        }
+export default defineConfig ({
+  plugins: [vue(),
+    legacy({
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime'] // 兼容旧版本浏览器
+    }),
+    viteMockServe()
+  ],
+  resolve: {
+    alias: [
+      {
+        find: '@',
+        replacement: '/src'
+      }
+    ]
+  },
+  css: {
+    postcss: {
+      plugins: [
+        postcssImport,
+        nesting,
+        autoprefixer,
+        tailwindcss
       ]
-    },
-    css: {
-      postcss: {
-        plugins: [
-          postcssImport,
-          nesting,
-          autoprefixer,
-          tailwindcss
-        ]
+    }
+  },
+  build:{
+    rollupOptions:{
+      plugins:[externalGlobals({
+        vue:'Vue',
+        'element-plus': 'ElementPlus'
+      })],
+      external: [
+        'vue',
+        'element-plus'
+      ],
+      input:{
+        index:'index.html'
       }
     }
   }
-}
+})
