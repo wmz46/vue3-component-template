@@ -5,14 +5,25 @@ export default{
 </script>
 <script setup lang="ts">
 import { ref } from 'vue'
+import { test, login } from '@/api'
+import { ElMessageBox } from 'element-plus'
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
 const name = import.meta.env.VITE_COMPONENT_NAME
+const html = ref('<a>http://www.baidu.com</a><script>alert(1)<\/script>')
+test().then(data => {
+  alert(data.message)
+})
+const toast = () => {
+  ElMessageBox.alert('hello')
+}
 </script>
 
 <template>
+  <div v-xss-html='html' />
+  <el-button type='danger' @click='toast()'>我是按钮</el-button>
   <h1>{{ msg }}</h1>
   <h2>{{ name }}</h2>
   <p>
