@@ -10,3 +10,10 @@ declare module '*.vue' {
 declare module 'postcss-import'
 declare module 'tailwindcss'
 declare module 'tailwindcss/nesting'
+
+interface IResponse<T = any> {
+  code: number;
+  message: string;
+  data: T;
+  success:boolean;
+}
