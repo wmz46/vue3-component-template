@@ -5,6 +5,8 @@ const components = import.meta.globEager('../components/*/index.vue')
 export default (app:App<Element>):void => {
   for (const path in components) {
     const component = components[path].default
-    app.component(component.name,component)
+    // 如果组件未定义名称，则根据文件夹名称命名
+    const name = component.name || path.split('/').slice(-2,-1)
+    app.component(name,component)
   }
 }
