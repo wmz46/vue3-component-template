@@ -1,9 +1,8 @@
 
 import axios from 'axios'
-
 const request = axios.create({
   // API 请求的默认前缀
-  baseURL: import.meta.env.VUE_APP_API_BASE_URL as string | undefined,
+  baseURL: import.meta.env.VITE_API_BASE_URL as string | undefined,
   timeout: 60000 // 请求超时时间
 })
 const get = function(url:string,data:unknown):Promise<IResponse> {
