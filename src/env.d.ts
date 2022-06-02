@@ -6,6 +6,11 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+// 环境变量智能提示
+interface ImportMetaEnv{
+  readonly VITE_APP_TITLE:string
+  readonly VITE_API_BASE_URL:string
+}
 
 declare module 'postcss-import'
 declare module 'tailwindcss'
