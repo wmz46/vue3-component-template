@@ -1,19 +1,20 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './assets/index.css'
+import { pinia } from '@/store'
 import router from './router/index'
 import direct from '@/directive/index'
 import components from './components'
-
-import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import './assets/index.css'
+import 'element-plus/theme-chalk/index.css'
 
 const app = createApp(App)
+// 注入pinia
+app.use(pinia)
 // 注入自定义指令
-direct(app)
-app.use(router)
+app.use(direct)
+// 注入公共组件
 app.use(components)
-app.use(ElementPlus,{
-  locale: zhCn
-})
+// 注入路由
+app.use(router)
+// 挂载
 app.mount('#app')

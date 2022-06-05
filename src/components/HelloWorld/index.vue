@@ -8,7 +8,9 @@ import { ref } from 'vue'
 import { test, login } from '@/api'
 import { ElMessageBox } from 'element-plus'
 
-defineProps<{ msg: string }>()
+withDefaults(defineProps<{ msg: string }>(),{
+  msg:''
+})
 
 const count = ref(0)
 const name = import.meta.env.VITE_COMPONENT_NAME
