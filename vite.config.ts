@@ -20,14 +20,14 @@ export default defineConfig ({
       targets: ['defaults', 'not IE 11'],
       additionalLegacyPolyfills: ['regenerator-runtime/runtime'] // 兼容旧版本浏览器
     }),
-    viteMockServe(),
+    viteMockServe()
     // 按需导入element-plus组件
-    AutoImport({
-      resolvers: [ElementPlusResolver()]
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()]
-    })
+    // AutoImport({
+    //   resolvers: [ElementPlusResolver()]
+    // }),
+    // Components({
+    //   resolvers: [ElementPlusResolver()]
+    // })
 
   ],
   resolve: {
@@ -47,6 +47,9 @@ export default defineConfig ({
         tailwindcss
       ]
     }
+  },
+  build:{
+    chunkSizeWarningLimit: 1500
   }
 
 })

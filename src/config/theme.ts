@@ -1,5 +1,4 @@
-import { useLayoutStore } from '@/store/layout'
-
+import { useLayoutStore } from '../store/layout'
 const theme:() => ITheme[] = () => {
   const { color } = useLayoutStore().getSetting
   return [

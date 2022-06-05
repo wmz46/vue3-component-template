@@ -1,5 +1,5 @@
 <script lang="ts">
-export default{
+export default {
   name:'HelloWorld'
 }
 </script>

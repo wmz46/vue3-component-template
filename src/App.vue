@@ -6,32 +6,32 @@ export default {
 }
 </script>
 <script lang='ts' setup>
-// import { ref, Ref, watch } from 'vue'
+import { ref, Ref, watch } from 'vue'
 import locale from 'element-plus/lib/locale/lang/zh-cn'
-// import { ElConfigProvider } from 'element-plus'
-// import { changeThemeDefaultColor } from '@/utils/changeThemeColor'
-// import theme from '@/config/theme'
-// import { useLayoutStore } from '@/store/layout'
+import { ElConfigProvider } from 'element-plus'
+import { changeThemeDefaultColor } from '@/utils/changeThemeColor'
+import theme from '@/config/theme'
+import { useLayoutStore } from '@/store/layout'
 
-// changeThemeDefaultColor()
-// const { getSetting } = useLayoutStore()
+changeThemeDefaultColor()
+const { getSetting } = useLayoutStore()
 
-// // 重新获取主题色
-// const f = () => {
-//   let themeArray = theme()
-//   return getSetting.theme >= themeArray.length ? themeArray[0] : themeArray[getSetting.theme]
-// }
+// 重新获取主题色
+const f = () => {
+  let themeArray = theme()
+  return getSetting.theme >= themeArray.length ? themeArray[0] : themeArray[getSetting.theme]
+}
 
-// let themeStyle: Ref<ITheme> = ref(f())
-// watch(() => getSetting.theme, () => themeStyle.value = f())
-// watch(() => getSetting.color.primary, () => themeStyle.value = f())
+let themeStyle: Ref<ITheme> = ref(f())
+watch(() => getSetting.theme, () => themeStyle.value = f())
+watch(() => getSetting.color.primary, () => themeStyle.value = f())
 </script>
 <template>
   <ElConfigProvider :locale='locale'>
     <router-view />
   </ElConfigProvider>
 </template>
-<!--
+
 <style lang='postcss'>
 .layout-sidebar-sidesetting>i {
   background-color: v-bind(themeStyle.sidebarActiveBg);
@@ -155,4 +155,4 @@ import locale from 'element-plus/lib/locale/lang/zh-cn'
 .layout-main-content {
   background-color: v-bind(themeStyle.mainBg);
 }
-</style> -->
+</style>

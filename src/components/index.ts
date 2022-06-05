@@ -14,7 +14,6 @@ export default (app:App<Element>):void => {
     const component = components2[path].default
     // 如果组件未定义名称，则根据文件夹名称命名
     const name = component.name || path.match(/^\.\.\/components\/(.+)\/index\.vue/)?.[1]
-    console.info(name)
     app.component(name,component)
   }
 }
