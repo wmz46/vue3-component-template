@@ -8,7 +8,13 @@ import './assets/index.css'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/display.css'
-
+import { formatDate, formatNumber } from '@/utils'
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $formatDate: (input: Date | string | number, format?: string) => string,
+    $formatNumber: (input: string | number, format: string) => string | number,
+  }
+}
 const app = createApp(App)
 // 注入pinia
 app.use(pinia)
@@ -19,5 +25,8 @@ app.use(direct)
 app.use(components)
 // 注入路由
 app.use(router)
+// 注入公共方法
+app.config.globalProperties.$formatDate = formatDate
+app.config.globalProperties.$formatNumber = formatNumber
 // 挂载
 app.mount('#app')
