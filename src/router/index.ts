@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import type { DefineComponent } from 'vue'
+import Layout from '@/layout/index.vue'
 // import NotFound from '../components/NotFound/index.vue'
 const routes: RouteRecordRaw[] = [
   // { path: '/', redirect: '/HelloWorld' }

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "target": "esnext",
     "types": ["vite/client","element-plus/global"],
     "useDefineForClassFields": true,
