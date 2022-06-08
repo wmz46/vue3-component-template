@@ -323,7 +323,7 @@
 
 "@vue/devtools-api@^6.0.0", "@vue/devtools-api@^6.1.4":
   version "6.1.4"
-  resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.1.4.tgz#b4aec2f4b4599e11ba774a50c67fa378c9824e53"
+  resolved "https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.1.4.tgz#b4aec2f4b4599e11ba774a50c67fa378c9824e53"
   integrity sha512-IiA0SvDrJEgXvVxjNkHPFfDx6SXw0b/TUkqMcDZWNg9fnCAHbTpoo59YfJ9QLFkwa3raau5vSlRVzMSLDnfdtQ==
 
 "@vue/reactivity-transform@3.2.33":
@@ -1918,21 +1918,6 @@ vue-tsc@^0.34.7:
   integrity sha512-5NM4oR8U/c3mTlJ9aNXbXkAGT2bhq+FJpCgZDqOKPpCjW5QDx1BXPC+nrBXNMwg8TRL6pK4fl+x+hrK97Siq/Q==
   dependencies:
     "@volar/vue-typescript" "0.34.11"
-
-vue3-hash-calendar@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.npmmirror.com/vue3-hash-calendar/-/vue3-hash-calendar-0.0.1.tgz#eaf8b7e236d292e87ad1a3042be0c1b861687604"
-  integrity sha512-x9w93DO9xCItrtgQFuGgBTULLcSgXIsXs77/vqqft72hO1rdChInK7BKes9Jph8KTtBEcakG51cbJBMe/eACsg==
-  dependencies:
-    vue "^3.2.25"
-
-vue3-hash-calendar@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npmmirror.com/vue3-hash-calendar/-/vue3-hash-calendar-0.1.0.tgz#f1b46e54f63b965e979a16fd2123b49c81b1e8b2"
-  integrity sha512-Bt9erLssQiiI5/9t4RA3AxH8ftMWTcsY0emFi1OKL8+8pTepGhlGFiGh5+lxsGdb44IF8h7Mk3aEhP8LOxCPYA==
-  dependencies:
-    vue "^3.2.25"
-    vue3-hash-calendar "^0.0.1"
 
 vue@^3.2.25:
   version "3.2.33"
