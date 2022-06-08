@@ -56,7 +56,7 @@ const changeHandle = () => {
 
 </script>
 <template>
-  <el-select-v2 v-model='year' :options='yearOptions' filterable @change='changeHandle' />年
+  <el-select-v2 v-model='year' :options='yearOptions' filterable allow-create @change='changeHandle' />年
   <el-select v-model='month' filterable @change='changeHandle'>
     <el-option v-for='i of 12' :key='i' :label='i' :value='i' />
   </el-select>月
