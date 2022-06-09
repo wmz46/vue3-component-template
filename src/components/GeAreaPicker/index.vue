@@ -2,9 +2,9 @@
 import { ref, computed } from 'vue'
 import areaData from './data.json'
 const props = withDefaults(defineProps<{
-  provice?: string
-  city?: string
-  district?: string
+  provice?: string | null
+  city?: string | null
+  district?: string | null
 }>(), {
   provice: '',
   city: '',
@@ -55,7 +55,7 @@ const update = () => {
   emit('update:provice', proviceName.value)
   emit('update:city', cityName.value)
   emit('update:district', districtName.value)
-  emit('change',proviceName.value + cityName.value + districtName.value)
+  emit('change', proviceName.value + cityName.value + districtName.value)
 
 }
 </script>

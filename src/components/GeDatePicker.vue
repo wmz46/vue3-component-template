@@ -6,7 +6,7 @@ const props = withDefaults(defineProps<{
   modelValue: string|Date|null,
   filterable?:boolean
 }>(), {
-  modelValue: dayjs().format('YYYY-MM-DD'),
+  modelValue: '',
   filterable:false
 })
 const emit = defineEmits(['update:modelValue','change'])
@@ -21,10 +21,6 @@ if(typeof props.modelValue == 'string') {
   year.value = props.modelValue.getFullYear()
   month.value = props.modelValue.getMonth() + 1
   day.value = props.modelValue.getDate()
-}else if(props.modelValue == null) {
-  year.value = new Date().getFullYear()
-  month.value = new Date().getMonth() + 1
-  day.value = new Date().getDate()
 }
 const yearOptions: any[] = []
 for (let y = new Date().getFullYear() + 10; y >= 1700; y--) {
