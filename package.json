@@ -24,7 +24,8 @@
     "build": "vue-tsc --noEmit && vite build --base=./",
     "build:lib": "vue-tsc --noEmit && vite build --config ./build/lib.config.ts",
     "build:core": "vue-tsc --noEmit && vite build --config ./build/core.config.ts",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -44,6 +45,7 @@
     "eslint": "^8.15.0",
     "eslint-plugin-vue": "^8.7.1",
     "mockjs": "^1.1.0",
+    "patch-package": "^6.4.7",
     "postcss-import": "^14.1.0",
     "tailwindcss": "^3.0.24",
     "typescript": "^4.5.4",
