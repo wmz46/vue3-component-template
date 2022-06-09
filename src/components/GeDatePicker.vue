@@ -3,9 +3,11 @@ import { ref, computed } from 'vue'
 import dayjs from 'dayjs'
 
 const props = withDefaults(defineProps<{
-  modelValue: string|Date|null
+  modelValue: string|Date|null,
+  filterable?:boolean
 }>(), {
-  modelValue: dayjs().format('YYYY-MM-DD')
+  modelValue: dayjs().format('YYYY-MM-DD'),
+  filterable:false
 })
 const emit = defineEmits(['update:modelValue','change'])
 const year = ref(NaN)
@@ -56,13 +58,13 @@ const changeHandle = () => {
 
 </script>
 <template>
-  <el-select-v2 v-model='year' :options='yearOptions' filterable allow-create @change='changeHandle' />年
-  <el-select v-model='month' filterable @change='changeHandle'>
+  <el-select-v2 v-model='year' :options='yearOptions' :filterable='filterable' allow-create @change='changeHandle' /> 年
+  <el-select v-model='month' @change='changeHandle'>
     <el-option v-for='i of 12' :key='i' :label='i' :value='i' />
-  </el-select>月
-  <el-select v-model='day' filterable @change='changeHandle'>
+  </el-select> 月
+  <el-select v-model='day' @change='changeHandle'>
     <el-option v-for='i of maxDay' :key='i' :lable='i' :value='i' />
-  </el-select>日
+  </el-select> 日
 </template>
 <style scoped>
 </style>
