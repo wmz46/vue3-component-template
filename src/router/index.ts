@@ -4,6 +4,7 @@ import Layout from '@/layout/index.vue'
 // import NotFound from '../components/NotFound/index.vue'
 const routes: RouteRecordRaw[] = [
   // { path: '/', redirect: '/HelloWorld' }
+  { path:'/Layout' ,component:Layout }
   // { path: '/:pathMatch(.*)*', component:NotFound }
 ]
 

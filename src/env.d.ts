@@ -15,6 +15,7 @@ declare module 'postcss-import'
 declare module 'tailwindcss'
 declare module 'tailwindcss/nesting'
 declare module 'rollup-plugin-external-globals'
+declare module 'pinyin'
 
 declare interface Window {
   config: {

@@ -8,6 +8,7 @@ import Screenfull from '@/layout/components/screenfull.vue'
 import Search from '@/layout/components/search.vue'
 import LayoutMenubar from '@/layout/components/menubar.vue'
 import icon from '@/assets/img/icon.ico'
+import defaultAvatar from '@/assets/img/default-avatar.png'
 
 interface IBreadcrumbList {
   path: string
@@ -34,13 +35,9 @@ const breadcrumb = (route: RouteLocationNormalizedLoaded) => {
   watch(() => route.path, () => data.breadcrumbList = fn())
   return { data }
 }
-const { getMenubar, getUserInfo, changeCollapsed, logout, getSetting ,setModule } = useLayoutStore()
+const { getMenubar, getUserInfo, changeCollapsed, logout, getSetting } = useLayoutStore()
 const route = useRoute()
 const title = ''
-const changeModule = (module:string) => {
-  setModule(module)
-  window.location.reload()
-}
 const { data } = breadcrumb(route)
 </script>
 <template>
@@ -69,15 +66,12 @@ const { data } = breadcrumb(route)
     <!-- 用户下拉 -->
     <el-dropdown>
       <span class='el-dropdown-link flex flex-center px-2'>
-        <el-avatar :size='30' :src='getUserInfo.avatar' />
+        <el-avatar :size='30' :src='getUserInfo.avatar || defaultAvatar' />
         <span class='ml-2'>{{ getUserInfo.name }}</span>
         <i class='el-icon-arrow-down el-icon--right' />
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item @click='changeModule("blog")'>Blog</el-dropdown-item>
-          <el-dropdown-item @click='changeModule("erp")'>ERP</el-dropdown-item>
-          <el-dropdown-item @click='changeModule("cms")'>CMS</el-dropdown-item>
           <el-dropdown-item>修改密码</el-dropdown-item>
           <el-dropdown-item divided @click='logout'>退出登录</el-dropdown-item>
         </el-dropdown-menu>
