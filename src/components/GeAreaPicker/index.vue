@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { computed,reactive } from 'vue'
 import areaData from './data.json'
 const props = withDefaults(defineProps<{
   provice?: string | null
@@ -10,10 +10,13 @@ const props = withDefaults(defineProps<{
   city: '',
   district: ''
 })
+const data = reactive({
+  provice:props.provice || '',
+  city:props.city || '',
+  district:props.district || ''
+})
 const emit = defineEmits(['change', 'update:provice', 'update:city', 'update:district'])
-const proviceName = ref(props.provice)
-const cityName = ref(props.city)
-const districtName = ref(props.district)
+
 const proviceList = computed(() => {
   return areaData.map(m => {
     return {
@@ -23,7 +26,7 @@ const proviceList = computed(() => {
   })
 })
 const cityList = computed(() => {
-  return areaData.find(m => m.name == proviceName.value)?.children.map(m => {
+  return areaData.find(m => m.name == data.provice)?.children.map(m => {
     return {
       code: m.code,
       name: m.name
@@ -32,7 +35,7 @@ const cityList = computed(() => {
 })
 
 const districtList = computed(() => {
-  return areaData.find(m => m.name == proviceName.value)?.children.find(m => m.name == cityName.value)?.children.map(m => {
+  return areaData.find(m => m.name == data.provice)?.children.find(m => m.name == data.city)?.children.map(m => {
     return {
       code: m.code,
       name: m.name
@@ -40,33 +43,33 @@ const districtList = computed(() => {
   })
 })
 const priviceChangeHandle = () => {
-  cityName.value = ''
-  districtName.value = ''
+  data.city = ''
+  data.district = ''
   update()
 }
 const cityChangeHandel = () => {
-  districtName.value = ''
+  data.district = ''
   update()
 }
 const districtChangeHandle = () => {
   update()
 }
 const update = () => {
-  emit('update:provice', proviceName.value)
-  emit('update:city', cityName.value)
-  emit('update:district', districtName.value)
-  emit('change', proviceName.value + cityName.value + districtName.value)
+  emit('update:provice', data.provice)
+  emit('update:city', data.city)
+  emit('update:district', data.district)
+  emit('change', data.provice + data.city + data.district)
 
 }
 </script>
 <template>
-  <el-select v-model='proviceName' @change='priviceChangeHandle'>
+  <el-select v-model='data.provice' @change='priviceChangeHandle'>
     <el-option v-for='m in proviceList' :key='m.code' :label='m.name' :value='m.name' />
   </el-select>
-  <el-select v-model='cityName' @change='cityChangeHandel'>
+  <el-select v-model='data.city' @change='cityChangeHandel'>
     <el-option v-for='m in cityList' :key='m.code' :label='m.name' :value='m.name' />
   </el-select>
-  <el-select v-model='districtName' @change='districtChangeHandle'>
+  <el-select v-model='data.district' @change='districtChangeHandle'>
     <el-option v-for='m in districtList' :key='m.code' :label='m.name' :value='m.name' />
   </el-select>
 </template>
