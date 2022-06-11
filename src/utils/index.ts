@@ -1,5 +1,6 @@
 
-import dayjs from 'dayjs'
+import dayjs, { locale } from 'dayjs'
+import xss from 'xss'
 /**
  * localStorage设置有效期
  * @param name localStorage设置名称
@@ -47,14 +48,11 @@ export function throttle(time = 500): () => Promise<void> {
  * @param format
  * @returns
  */
-export function formatDate(input: Date | string | number, format?: string): string {
+export function formatDate(input: Date | string | number, format = 'yyyy-MM-dd'): string {
   if (!input) {
     return ''
   }
   let date
-  if (!format) {
-    format = 'yyyy-MM-dd'
-  }
   format = format.replace(/y/g, 'Y').replace(/([^d]|^)(d)([^d]|$)/g, '$1D$3')
     .replace(/([^d]|^)(dd)([^d]|$)/g, '$1DD$3') // 不区分大小写
   if (input instanceof Date) {
@@ -126,4 +124,17 @@ export function formatNumber(input: string | number, format: string): string | n
   } else {
     return f
   }
+}
+/**
+ * tts
+ * @param text
+ * @param rate
+ * @param lang
+ */
+export function speak(text:string,rate = 1,lang = 'zh-CN') {
+  const utterance = new SpeechSynthesisUtterance()
+  utterance.text = text
+  utterance.lang = lang
+  utterance.rate = rate
+  speechSynthesis.speak(utterance)
 }

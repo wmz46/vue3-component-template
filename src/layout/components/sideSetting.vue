@@ -16,7 +16,7 @@ const theme = Theme()
 </script>
 
 <template>
-  <i class='el-icon-s-tools text-2xl px-2 py-1 cursor-pointer rounded-l-md' @click='drawer=!drawer' />
+  <i class='fa fa-cog text-2xl px-2 py-1 cursor-pointer rounded-l-md' @click='drawer=!drawer' />
   <el-drawer v-model='drawer' title='系统布局配置' size='280px'>
     <div class='pt-4'>
       <p class='py-2'>整体风格设置</p>

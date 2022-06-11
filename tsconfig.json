@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "target": "esnext",
-    "types": ["vite/client","element-plus/global"],
+    "types": ["vite/client","element-plus/global","vite-plugin-svg-icons/client"],
     "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",

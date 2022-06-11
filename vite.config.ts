@@ -6,6 +6,8 @@ import autoprefixer from 'autoprefixer'
 import nesting from 'tailwindcss/nesting'
 import legacy from '@vitejs/plugin-legacy'
 import { viteMockServe } from 'vite-plugin-mock'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig ({
@@ -13,8 +15,13 @@ export default defineConfig ({
     legacy({
       additionalLegacyPolyfills: ['regenerator-runtime/runtime'] // 兼容旧版本浏览器
     }),
-    viteMockServe()
-
+    viteMockServe(),
+    createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
+      iconDirs: [resolve(process.cwd(),'src/icons')],
+      // 指定symbolId格式
+      symbolId: 'icon-[dir]-[name]'
+    })
 
   ],
   resolve: {

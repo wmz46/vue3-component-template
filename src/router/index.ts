@@ -36,7 +36,6 @@ for (const path in components2) {
     component: component
   })
 }
-console.info(routes)
 const router = createRouter({
   routes,
   history: createWebHashHistory()

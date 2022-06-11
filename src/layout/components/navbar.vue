@@ -3,11 +3,8 @@
 import { reactive, watch } from 'vue'
 import { useLayoutStore } from '@/store/layout'
 import { useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
-import Notice from '@/layout/components/notice.vue'
 import Screenfull from '@/layout/components/screenfull.vue'
-import Search from '@/layout/components/search.vue'
 import LayoutMenubar from '@/layout/components/menubar.vue'
-import icon from '@/assets/img/icon.ico'
 import defaultAvatar from '@/assets/img/default-avatar.png'
 
 interface IBreadcrumbList {
@@ -77,12 +74,7 @@ const { data } = breadcrumb(route)
         </el-dropdown-menu>
       </template>
     </el-dropdown>
-    <Chat />
-    <Notice />
     <Screenfull />
-    <Search />
-    <!--天气组件-->
-    <ex-weather />
   </div>
 </template>
 
