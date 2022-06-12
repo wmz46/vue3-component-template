@@ -4,6 +4,7 @@ import { ref, watch } from 'vue'
 import Theme from '@/config/theme'
 import { useLayoutStore } from '@/store/layout'
 import LayoutTheme from '@/layout/components/theme.vue'
+import { Check } from '@element-plus/icons-vue'
 
 const { changeTheme, getSetting, changeTagsSetting, changePinSearchSetting, changemenubarMode } = useLayoutStore()
 const drawer = ref(false)
@@ -31,7 +32,9 @@ const theme = Theme()
               <div class='h-3' :style='{"backgroundColor": val.navbarBg || "#fff"}' />
               <div v-if='getSetting.showTags' class='h-2' :style='{"backgroundColor": val.tagsBg || "#fff"}' />
               <div class='flex-1 relative' :style='{"backgroundColor": val.mainBg}'>
-                <i v-if='getSetting.theme===index' class='el-icon-check absolute left-2/4 top-2/4 transform -translate-x-2/4 -translate-y-2/4' :style='{"color": getSetting.color.primary}' />
+                <el-icon v-if='getSetting.theme===index' class='absolute left-2/4 top-2/4 transform -translate-x-2/4 -translate-y-2/4' :style='{"color": getSetting.color.primary}'>
+                  <Check />
+                </el-icon>
               </div>
             </div>
           </div>
@@ -46,7 +49,9 @@ const theme = Theme()
             <div class='flex flex-col flex-1'>
               <div class='h-3' :style='{"backgroundColor": theme[getSetting.theme].tagsBg || "#fff"}' />
               <div class='flex-1 relative' :style='{"backgroundColor": theme[getSetting.theme].mainBg}'>
-                <i v-if='getSetting.mode === "vertical"' class='el-icon-check absolute left-2/4 top-2/4 transform -translate-x-2/4 -translate-y-2/4' :style='{"color": getSetting.color.primary}' />
+                <el-icon v-if='getSetting.mode === "vertical"' class='absolute left-2/4 top-2/4 transform -translate-x-2/4 -translate-y-2/4' :style='{"color": getSetting.color.primary}'>
+                  <Check />
+                </el-icon>
               </div>
             </div>
           </div>
@@ -56,7 +61,9 @@ const theme = Theme()
             <div class='flex flex-col h-4' :style='{"backgroundColor": (theme[getSetting.theme].logoBg || theme[getSetting.theme].sidebarBg)}' />
             <div class='flex flex-col flex-1'>
               <div class='flex-1 relative' :style='{"backgroundColor": theme[getSetting.theme].mainBg}'>
-                <i v-if='getSetting.mode === "horizontal"' class='el-icon-check absolute left-2/4 top-2/4 transform -translate-x-2/4 -translate-y-2/4' :style='{"color": getSetting.color.primary}' />
+                <el-icon v-if='getSetting.mode === "horizontal"' class='absolute left-2/4 top-2/4 transform -translate-x-2/4 -translate-y-2/4' :style='{"color": getSetting.color.primary}'>
+                  <Check />
+                </el-icon>
               </div>
             </div>
           </div>

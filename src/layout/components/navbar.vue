@@ -6,7 +6,7 @@ import { useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
 import Screenfull from '@/layout/components/screenfull.vue'
 import LayoutMenubar from '@/layout/components/menubar.vue'
 import defaultAvatar from '@/assets/img/default-avatar.png'
-import { Fold,Expand } from '@element-plus/icons-vue'
+import { Fold,Expand,ArrowDown } from '@element-plus/icons-vue'
 
 interface IBreadcrumbList {
   path: string
@@ -69,7 +69,9 @@ const { data } = breadcrumb(route)
       <span class='el-dropdown-link flex flex-center px-2'>
         <el-avatar :size='30' :src='getUserInfo.avatar || defaultAvatar' />
         <span class='ml-2'>{{ getUserInfo.name }}</span>
-        <i class='el-icon-arrow-down el-icon--right' />
+        <el-icon>
+          <ArrowDown />
+        </el-icon>
       </span>
       <template #dropdown>
         <el-dropdown-menu>

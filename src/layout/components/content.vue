@@ -2,6 +2,7 @@
 import { computed, reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useLayoutStore } from '@/store/layout'
+import { CaretTop } from '@element-plus/icons-vue'
 
 const route = useRoute()
 const { getSetting, getTags } = useLayoutStore()
@@ -26,7 +27,11 @@ watch(
       </transition>
     </router-view>
     <el-backtop target='.layout-main-content>.el-scrollbar>.el-scrollbar__wrap' :bottom='15' :right='15'>
-      <div><i class='el-icon-caret-top' /></div>
+      <div>
+        <el-icon>
+          <CaretTop />
+        </el-icon>
+      </div>
     </el-backtop>
   </el-scrollbar>
 </template>
