@@ -6,6 +6,7 @@ import { useRoute, RouteLocationNormalizedLoaded } from 'vue-router'
 import Screenfull from '@/layout/components/screenfull.vue'
 import LayoutMenubar from '@/layout/components/menubar.vue'
 import defaultAvatar from '@/assets/img/default-avatar.png'
+import { Fold,Expand } from '@element-plus/icons-vue'
 
 interface IBreadcrumbList {
   path: string
@@ -39,7 +40,10 @@ const { data } = breadcrumb(route)
 </script>
 <template>
   <div v-if='getSetting.mode === "vertical" || getMenubar.isPhone' class='flex items-center px-4 flex-wrap h-12 leading-12'>
-    <span class='text-2xl cursor-pointer h-12 leading-12' :class='{ "el-icon-s-fold": !getMenubar.status, "el-icon-s-unfold": getMenubar.status }' @click='changeCollapsed' />
+    <el-icon class='cursor-pointer h-12 leading-12' :size='24' @click='changeCollapsed'>
+      <Fold v-if='!getMenubar.status' />
+      <Expand v-else />
+    </el-icon>
     <!-- 面包屑导航 -->
     <div class='px-4'>
       <el-breadcrumb separator='/'>

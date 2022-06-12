@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+
+  button:focus {
+    outline: none;
+  }
+
+  .transition-width {
+    transition-property: width;
+  }
+
+  .flex-center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .min-height-10 {
+    min-height: 2.5rem;
+  }
+
+  .min-width-32 {
+    min-width: 8rem;
+  }
+
+  .leading-12 {
+    line-height: 3rem;
+  }
+}
