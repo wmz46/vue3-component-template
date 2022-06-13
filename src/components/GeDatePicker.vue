@@ -31,7 +31,7 @@ const init = () => {
 }
 init()
 const yearOptions: any[] = []
-for (let y = new Date().getFullYear() + 10; y >= 1700; y--) {
+for (let y = new Date().getFullYear() ; y >= new Date().getFullYear() - 100; y--) {
   yearOptions.push({
     value: y,
     label: `${y}年`
