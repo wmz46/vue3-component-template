@@ -63,10 +63,10 @@ const update = () => {
 }
 </script>
 <template>
-  <el-select v-model='data.provice' @change='priviceChangeHandle'>
+  <el-select v-model='data.provice' class='mr-3' @change='priviceChangeHandle'>
     <el-option v-for='m in proviceList' :key='m.code' :label='m.name' :value='m.name' />
   </el-select>
-  <el-select v-model='data.city' @change='cityChangeHandel'>
+  <el-select v-model='data.city' class='mr-3' @change='cityChangeHandel'>
     <el-option v-for='m in cityList' :key='m.code' :label='m.name' :value='m.name' />
   </el-select>
   <el-select v-model='data.district' @change='districtChangeHandle'>
