@@ -11,12 +11,15 @@ const props = withDefaults(defineProps<{
 })
 const emit = defineEmits(['update:modelValue','change'])
 const data = reactive({
-  year:NaN,
-  month:NaN,
-  day:NaN
+  year:'' as unknown as number,
+  month:'' as unknown as number,
+  day:'' as unknown as number
 })
 const init = () => {
-  if(typeof props.modelValue == 'string') {
+  if(props.modelValue == null || props.modelValue == '') {
+    return
+  }
+  else if(typeof props.modelValue == 'string') {
     data.year = parseInt(`${props.modelValue?.split('-')?.[0]}`)
     data.month = parseInt(`${props.modelValue?.split('-')?.[1]}`)
     data.day = parseInt(`${props.modelValue?.split('-')?.[2]}`)
@@ -63,13 +66,13 @@ const changeHandle = () => {
 </script>
 <template>
   <div v-bind='$attrs'>
-    <el-select v-model='data.year' :filterable='filterable' allow-create class='w-40 mr-3' @change='changeHandle'>
+    <el-select v-model='data.year' :filterable='filterable' allow-create class='w-40 mr-3' placeholder='请选择年份' @change='changeHandle'>
       <el-option v-for='item in yearOptions' :key='item.value' :label='item.label' :value='item.value' />
     </el-select>
-    <el-select v-model='data.month' class='w-40 mr-3' @change='changeHandle'>
+    <el-select v-model='data.month' class='w-40 mr-3' placeholder='请选择月份' @change='changeHandle'>
       <el-option v-for='i of 12' :key='i' :label='i+"月"' :value='i' />
     </el-select>
-    <el-select v-model='data.day' class='w-40' @change='changeHandle'>
+    <el-select v-model='data.day' class='w-40' placeholder='请选择日期' @change='changeHandle'>
       <el-option v-for='i of maxDay' :key='i' :label='i+"日"' :value='i' />
     </el-select>
 
