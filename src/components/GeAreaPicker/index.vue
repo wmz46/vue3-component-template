@@ -41,12 +41,25 @@ const cityList = computed(() => {
 })
 
 const districtList = computed(() => {
-  return areaData.find(m => m.name == data.provice)?.children.find(m => m.name == data.city)?.children.map(m => {
-    return {
-      code: m.code,
-      name: m.name
-    }
-  })
+  if(isMunicipality.value) {
+    const list:any[] = []
+    areaData.find(m => m.name == data.provice)?.children.forEach(city => {
+      list.push(...city?.children.map(m => {
+        return {
+          code:m.code,
+          name:m.name
+        }
+      }))
+    })
+    return list
+  }else{
+    return areaData.find(m => m.name == data.provice)?.children.find(m => m.name == data.city)?.children.filter(m => m.name != '市辖区').map(m => {
+      return {
+        code: m.code,
+        name: m.name
+      }
+    })
+  }
 })
 const hasDistrict = computed(() => {
   if(props.level == 3) {
@@ -61,6 +74,9 @@ const hasDistrict = computed(() => {
     return false
   }
 
+})
+const isMunicipality = computed(() => {
+  return ['北京市','天津市','上海市','重庆市'].indexOf(data.provice) > -1
 })
 const priviceChangeHandle = () => {
   data.city = ''
@@ -94,7 +110,7 @@ const update = () => {
   <el-select v-if='level>=1' v-model='data.provice' class='mr-3' placeholder='请选择省份' @change='priviceChangeHandle'>
     <el-option v-for='m in proviceList' :key='m.code' :label='m.name' :value='m.name' />
   </el-select>
-  <el-select v-if='level>=2' v-model='data.city' class='mr-3' placeholder='请选择城市' @change='cityChangeHandel'>
+  <el-select v-if='level>=2 && !isMunicipality' v-model='data.city' class='mr-3' placeholder='请选择城市' @change='cityChangeHandel'>
     <el-option v-for='m in cityList' :key='m.code' :label='m.name' :value='m.name' />
   </el-select>
   <el-select v-if='level>=3 && hasDistrict' v-model='data.district' placeholder='请选择区县' @change='districtChangeHandle'>
