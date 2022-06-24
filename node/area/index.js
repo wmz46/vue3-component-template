@@ -28,7 +28,7 @@ function readFile(file) {
       zipList[zipList.length - 1].list.push({
         name:arr[i],
         areacode:arr[i + 1],
-        zipcode:arr[i + 2]
+        zipcode:arr[i + 2].length > 6 ? arr[i + 2].substring(arr[i + 2].length - 6) : arr[i + 2]
       })
     }
   }
